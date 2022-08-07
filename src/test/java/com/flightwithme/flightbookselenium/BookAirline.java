@@ -97,17 +97,13 @@ public class BookAirline {
     @Test
     void Book_Me(){
         Guest_Login();
+        RoundTrip();
+        OneWay();
+        Multicity();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,150)", "");
-        if (){
-
-        } else if () {
-
-        }else{
-
-        }
-
+        //IS still Been Work On
     }
 }
 
