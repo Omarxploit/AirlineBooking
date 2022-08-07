@@ -1,7 +1,7 @@
 package com.flightwithme.flightbookselenium;
 
-import org.junit.After;
-import org.junit.AfterClass;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static org.junit.Assert.assertEquals;
 
 public class BookAirline {
     private static WebDriver driver = null;
@@ -37,6 +39,7 @@ public class BookAirline {
         WebElement searchbar = driver.findElement(By.name("q"));
         searchbar.sendKeys("american airlines login");
         searchbar.submit();
+        Assertions.assertEquals(searchbar, "american airlines login");
     }
     @Test
     void Navigate_to_the_website(){
@@ -58,6 +61,49 @@ public class BookAirline {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         WebElement Guest = driver.findElement(By.name("_button_login_guest"));
         Guest.click();
+        Assertions.assertEquals(Guest, "_button_login_guest");
+    }
+
+    //driver.findElement(By.linkText("App Configuration")); href="#roundtrip"
+    @Test
+    void RoundTrip(){
+        Guest_Login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,150)", "");
+        WebElement roundTrip = driver.findElement(By.linkText("a[href*='#roundtrip']"));
+        roundTrip.click();
+    }
+    @Test
+    void OneWay(){
+        Guest_Login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,150)", "");
+        WebElement OneWay =driver.findElement(By.cssSelector("a[href*='#oneway']"));
+        OneWay.click();
+    }
+    @Test
+    void Multicity(){
+        Guest_Login();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,150)", "");
+        WebElement MultiCity = driver.findElement(By.linkText("a[href*='#multicity']"));
+        MultiCity.click();
+    }
+
+    @Test
+    void Book_Me(){
+        Guest_Login();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,150)", "");
+        if (){
+
+        } else if () {
+
+        }else{
+
+        }
+
     }
 }
 
