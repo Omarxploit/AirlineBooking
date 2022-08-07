@@ -21,7 +21,9 @@ public class BookAirline {
     void OpenUrl_wait_Unit_Load() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\axwxr\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("https://www.google.com/");
+        String Url = "https://www.google.com/";
+        driver.get(Url);
+        Assertions.assertEquals(Url, "https://www.google.com/");
         //wait until the page load
         ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
@@ -46,7 +48,9 @@ public class BookAirline {
         EnterIntoSearchBar();
         //wait then navigate to the website
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.navigate().to("https://www.aa.com/loyalty/login/optional");
+        String Navigate_to_AirLine_WebSite = "https://www.aa.com/loyalty/login/optional";
+        driver.navigate().to(Navigate_to_AirLine_WebSite);
+        Assertions.assertEquals(Navigate_to_AirLine_WebSite, "https://www.aa.com/loyalty/login/optional");
     }
     @Test
     void Vertical_sroll_down(){
